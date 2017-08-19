@@ -3,175 +3,113 @@
 	class VarUrl
 	{
 
-		public function routingVithVar( $var = array() )
+		public function post( $routes = array() , $uri = array() )
 		{
 
-			foreach ($var as $key => $value) 
-			{
+			
+			$uriArr = explode( '/', $uri );
+			
+			foreach ( $uriArr as $key => $value ) if ( $value != '' ) $url[] = $value;
+			
+			$routesCount = count($routes);
+			$urlCount = count($url);
+
+			for ($i=0; $i <= $routesCount - 1; $i++) if( !empty( $routes[$i]['var'] ) ) $urlRouters[$i] = $routes[$i]['url'];
+
+			for ($i=0; $i <= $urlCount - 1; $i++) 
+			{ 
+				$arrayMath = $urlCount - 1 - $i + 1;
+				unset($url[$arrayMath]);
+				$urlImplodes[] = implode( '/' , $url);
 				
-				if ( !empty( $value['var'] ) )
-				{
+			}
 
-					$route[] = $value;
-					
+			$urlImplode = array_reverse($urlImplodes);
+
+			if( !empty( $urlRouters ) ) foreach($urlRouters as $key => $value) for($i=0; $i <= $urlCount - 1; $i++ ) if( $urlRouters[$key] == '/' . $urlImplode[$i] ) $routesTRUE['url'] = array( $key => $urlRouters[$key] );
+
+			if ( !empty( $routesTRUE['url'] ) ) foreach( $routesTRUE['url'] as $key => $value )
+			{
+
+				$routesUrlExplode = explode( '/', $value );
+				$routesVarExplode = explode( '/', $routes[$key]['var'] );
+				$arrayUrlRoute = array( 'routerUrl' => $routesUrlExplode , 'routerVar' => $routesVarExplode , 'uriUrl' => $uriArr , 'routes' => $routes[$key] );
+			}
+
+			if ( !empty( $arrayUrlRoute['uriUrl'] ) ) foreach( $arrayUrlRoute['uriUrl'] as $key => $value )
+			{
+
+				if( !empty( $arrayUrlRoute['routerUrl'][$key] ) and $value == $arrayUrlRoute['routerUrl'][$key] )
+				{
+					$urlFounded[] = $value;
+				}
+				else
+				{
+					if($value != '') $varFounded[] = $value;
+				}
+
+
+			}
+
+			if( !empty( $varFounded ) ) $waypoint = array(
+					'info' => array(
+						'url' => $urlFounded,
+						'varUnset' => $varFounded,
+						),
+					'router' => $arrayUrlRoute['routes']
+					);
+
+			if( !empty( $routesVarExplode ) ) foreach( $routesVarExplode as $key => $value )
+			{
+				if( $value != '' )
+				{
+					$arrVarsKey[] = $value;
 				}
 
 			}
 
+			if( !empty( $arrVarsKey ) ) $countArrVarsKey = count($arrVarsKey);
 
+			if( !empty( $waypoint ) ) $countWaipointVars = count($waypoint['info']['varUnset']);
 
-
-			$url = explode( '/' , URI );	
-
-			foreach ($route as $key => $value)
+			if( !empty( $countWaipointVars ) ) foreach($arrVarsKey as $key => $value)
 			{
-
-				$routing = explode( '/' , $value['url'] );
-
-				foreach ($routing as $key => $val) 
+				if( $countWaipointVars == $countArrVarsKey ) 
 				{
-					
-					if ( !empty( $url[$key] ) and $url[$key] == $val and $url[$key] != '' )
-					{
-						
-						$ROUTING = $value;
-						$URL['url'][] = $url[$key];	
-						
-					}
+					$waypoint['info']['var'][$value] = $waypoint['info']['varUnset'][$key];
 
 				}
-				
-
 			}
 
-			if ( !empty( $ROUTING ) ) 
+			if( !empty( $waypoint ) ) unset($waypoint['info']['varUnset']);
+			
+			if( !empty( $waypoint['info']['var'] ) ) return $waypoint;
+			
+		}
+
+		public function withoutVars( $routes = array() , $uri = array() , $post = array() )
+		{
+
+			if( empty( $post ) )
 			{
 
-				$ROUTINGvar = explode( '/' , $ROUTING['var'] );
+				foreach( $routes as $key => $value ) if( $value['url'] == $uri and empty( $value['var'] ) ) $router['router'] = $value;
 
-				foreach ( $ROUTINGvar as $key => $value ) 
-				{
-					
-					if( $value != '' ) $routingVar[] = $value;
-
-				}
-
-			}
-
-			foreach ($url as $key => $value) 
-			{
-				
-				if ( $value != '' ) $uri[] = $value;
-
-			}
-
-			foreach ($uri as $key => $value) 
-			{
-
-				if ( empty( $URL['url'][$key] ) ) $URL['var'][] = $value;
-
-			}
-
-			if ( !empty( $URL['var'] ) )
-			{
-
-				foreach ( $URL['var'] as $key => $value ) 
-				{
-
-					if( !empty( $routingVar[$key] ) ) $waypoint['var'][/*$routingVar[$key]*/] = $value;
-					else 
-					{ 
-						$errors[] = '<center>ERROR: 404 - NOT FOUND!</center>';
-					}
-
-				}
+				if ( !empty( $router ) ) return $router;
 
 			}
 			
-			if ( !empty( $URL['url'] ) )
-			{ 
-				$waypoint['url'] = $URL['url'];
-				$strWaypoint = implode("/" , $waypoint['url'] );
-				$uriWaypoint = '/'.$strWaypoint;
-			}
+		}
 
-			foreach ($var as $key => $value) 
-			{
+		public function router( $withoutVars = array() , $post = array() , $errors = array() )
+		{
 
-				if ( !empty( $uriWaypoint ) and $uriWaypoint == $value['url'] and !empty( $value['var'] ) and !empty( $waypoint['var'] ) ) 
-				{
-
-					$routerInfo = $value;
-					$urlWayPoint['url'] = $waypoint['url'];
-					break;
-
-				}
-				else if (!empty( $uriWaypoint ) and  $uriWaypoint == $value['url'] and !array_key_exists('var', $value) ) 
-				{
-					
-					$routerInfo = $value;
-					$urlWayPoint['url'] = $uriWaypoint;
-					break;
-
-				}
-								
-			}
-
-			if ( !empty( $routerInfo['var'] ) ) $varI = explode( '/' , $routerInfo['var']);
-
-			if ( !empty( $varI ) )
-			{
-
-				foreach ($varI as $key => $value) 
-				{
-					if ( $value != '' ) $varInfo[] = $value;
-				}
-
-			}
-					
-			if ( !empty( $varI ) )
-			{
-
-				foreach ($varInfo as $key => $value) 
-				{
-
-					if ( !empty( $waypoint['var'][$key] )) $urlWayPoint['var'][$value] = $waypoint['var'][$key];
-
-				}
-
-			}
-
-			if ( empty( $errors ) )
-			{
-
-				if ( !empty( $urlWayPoint ) )
-				{
-
-					return $info = array( 
-							'info' => $urlWayPoint ,
-							'router' => $routerInfo
-						);
-
-				}
-				else if ( empty( $urlWayPoint ) and !empty( $routerInfo ) )
-				{ 
-
-					return $info = array( 
-							'info' => $uriWaypoint ,
-							'router' => $routerInfo
-						);
-
-				}
-				else if ( empty( $routerInfo ) )
-				{ 
-
-					$errors[] = '<center>ERROR: THERE IS NO ONE ROUTE IN ROUTING.PHP</center>';
-				
-				}
-				// else if ( !empty( $errors ) ) return $info['errors'] = $errors;
-				// var_dump($errors);
-			} 
+			if( !empty( $withoutVars ) ) return $withoutVars;
+			else if ( !empty( $post) ) return $post;
+			else if ( !empty( $withoutVars ) and !empty( $post ) ) return exit( $errors['505'] );
+			else if ( empty( $withoutVars ) and empty( $post ) ) return exit( $errors['404'] );
 
 		}
+
 
 	}

@@ -30,18 +30,18 @@
 		private function post()
 		{
 
-			$static = 'static';
-			$post 	= 'post';
-			$get 	= 'get';
+		
 
 			require __ROUTING__ . VarUrl;
 			$routeMethod = new VarUrl;
 
-			$router = $routeMethod->routingVithVar( $this->route );
 
-			// var_dump($router);
-			
-			if ( !empty( $router ) and array_key_exists( 'info' , $router ) and array_key_exists( 'router' , $router ) and !array_key_exists( 'errors' , $router ) )
+			$post = $routeMethod->post( $this->route , URI );
+			$withoutVars = $routeMethod->withoutVars( $this->route , URI , $post );
+			$router = $routeMethod->router( $withoutVars , $post , $this->config );
+
+
+			if ( !empty( $router ) and array_key_exists( 'router' , $router ) and !array_key_exists( 'errors' , $router ) )
 			{ 
 
 				if ( $this->config['rule'] == 'on' )
@@ -71,7 +71,7 @@
 				else if ( $this->config['controllerAutoCreate'] == 'off' )
 				{
 
-					$errors[] = $this->config['controllerAutocreateTurnedOff'];
+					$errors[] = $this->config['controllerAutocreateOff'];
 
 				} 
 
@@ -94,9 +94,9 @@
 				if ( empty( $errors ) )
 				{
 
-					if( empty( $router['info']['var'] ) and empty( $_POST ) ) $method = $static;
-					if( !empty( $router['info']['var'] ) and empty( $_POST ) ) $method = $post;
-					if( !empty( $_POST ) ) $method = $get;
+					if( empty( $router['info']['var'] ) and empty( $_POST ) ) $method = 'static';
+					if( !empty( $router['info']['var'] ) and empty( $_POST ) ) $method = 'post';
+					if( !empty( $_POST ) ) $method = 'get';
 
 				}
 
@@ -114,7 +114,7 @@
 					else if ( $method == 'get' and !empty( $router['info']['var'] ) ) 
 						new $router['router']['controller']( $router['router']['function'] . '_' . $method , $router );
 
-					else if ( $method == 'get' and empty( $router['info']['var'] ) ) 
+					else if ( $method == 'get' ) 
 						new $router['router']['controller']( $router['router']['function'] . '_' . $method , $router );
 
 					
@@ -127,6 +127,67 @@
 
 
 			}
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*
@@ -280,7 +341,7 @@
 
 			}*/
 
-		}
+		// }
 
 
 

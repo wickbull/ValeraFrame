@@ -21,7 +21,7 @@
 	
 	<!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="/index">Sitebar</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -30,18 +30,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/index">Головна</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Каталог
-                        </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                        <a class="dropdown-item" href="/solarPanels">Сонячні панелі</a>
-                        <a class="dropdown-item" href="/inverters">Інвертори для сонячних панелей</a>
-                        <a class="dropdown-item" href="/cablesConnectors">Кабелі і конектори для сонячних панелей</a>
-                        <a class="dropdown-item" href="/mountingStructures">Монтажні конструкції</a>
-                        <a class="dropdown-item" href="/accessories">Комплектуючі</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="/catalog">Каталог</a>
                 </li>
+                <!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Каталог</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                        <a class="dropdown-item" href="/catalog/solarPanels">Сонячні панелі</a>
+                        <a class="dropdown-item" href="/catalog/inverters">Інвертори для сонячних панелей</a>
+                        <a class="dropdown-item" href="/catalog/cablesConnectors">Кабелі і конектори для сонячних панелей</a>
+                        <a class="dropdown-item" href="/catalog/mountingStructures">Монтажні конструкції</a>
+                        <a class="dropdown-item" href="/catalog/accessories">Комплектуючі</a>
+                    </div>
+                </li> -->
 
                 <li class="nav-item">
                     <a class="nav-link" href="services.html">Services</a>
@@ -62,14 +63,12 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Other Pages
+                            Українська <img src="/Public/Img/icons/flags/pl.gif" style="width: 30px; height: 20px;" alt="">
                         </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                        <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-                        <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
-                        <a class="dropdown-item" href="faq.html">FAQ</a>
-                        <a class="dropdown-item" href="404.html">404</a>
-                        <a class="dropdown-item" href="pricing.html">Pricing Table</a>
+                        <a class="dropdown-item">Російська</a>
+                        <a class="dropdown-item">Польска</a>
+                        <a class="dropdown-item">Англійська</a>
                     </div>
                 </li>
             </ul>
