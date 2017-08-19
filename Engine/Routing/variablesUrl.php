@@ -30,17 +30,17 @@
 
 				foreach ($routing as $key => $val) 
 				{
-
+					
 					if ( !empty( $url[$key] ) and $url[$key] == $val and $url[$key] != '' )
 					{
 						
 						$ROUTING = $value;
 						$URL['url'][] = $url[$key];	
-
+						
 					}
 
 				}
-				break;
+				
 
 			}
 
@@ -169,7 +169,7 @@
 				
 				}
 				// else if ( !empty( $errors ) ) return $info['errors'] = $errors;
-
+				// var_dump($errors);
 			} 
 
 		}

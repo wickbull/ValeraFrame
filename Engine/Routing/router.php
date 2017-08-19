@@ -38,6 +38,8 @@
 			$routeMethod = new VarUrl;
 
 			$router = $routeMethod->routingVithVar( $this->route );
+
+			// var_dump($router);
 			
 			if ( !empty( $router ) and array_key_exists( 'info' , $router ) and array_key_exists( 'router' , $router ) and !array_key_exists( 'errors' , $router ) )
 			{ 
@@ -103,7 +105,6 @@
 
 					if ( empty( $errors ) and $this->config['headerController'] == 'on' ) new headerController();
 
-					
 					if ( $method == 'static' ) 
 						new $router['router']['controller'] ( $router['router']['function'] . '_' . $method );
 
@@ -114,7 +115,7 @@
 						new $router['router']['controller']( $router['router']['function'] . '_' . $method , $router );
 
 					else if ( $method == 'get' and empty( $router['info']['var'] ) ) 
-						new $router['router']['controller']( $router['router']['function'] . '_' . $method );
+						new $router['router']['controller']( $router['router']['function'] . '_' . $method , $router );
 
 					
 					if ( empty( $errors ) and $this->config['footerController'] == 'on' ) new footerController();

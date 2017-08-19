@@ -12,41 +12,46 @@ $text =
 		protected $function;
 		protected $get;
 
-		function __construct( $function = array() , $get = array() , $post = array() )
+		function __construct( $function = array() , $get = array() )
 		{
 
 			if ( !empty( $function ) ) return $this->$function( $get );
 
-			echo "<center>' . $router['router']['controller'] . ' is created!</center>";
-
 		}
 
-		
 
-		public function ' . $router['router']['function'] . '_static( $get = array() , $post = array() )
+		public function ' . $router['router']['function'] . '( $get = array() ){}
+
+		public function ' . $router['router']['function'] . '_static( $get = array() )
 		{
 			
-			echo \'static or post or get\';
+			echo \'<center style="background:#81FF81">static::' . $router['router']['controller'] . '</center>\';
 
 			if( !empty($get) ) var_dump( $get );	
-			if( !empty($post) ) var_dump( $post );	
 
 			new view( \'/index\' , [\'ThisIsArrayID\' => \'ThisIsArrayArgument\'] );   // $variable[\'ThisIsArrayID\']  ->>> in template
 
 		}
 
-		public function get()
+		public function ' . $router['router']['function'] . '_post( $get = array() )
 		{
+			
+			echo \'<center style="background:#81FF81">post::' . $router['router']['controller'] . '</center>\';
 
-			# code here...
+			if( !empty($get) ) var_dump( $get );	
+
+			new view( \'/index\' , [\'ThisIsArrayID\' => \'ThisIsArrayArgument\'] );   // $variable[\'ThisIsArrayID\']  ->>> in template
 
 		}
 
-		public function post()
+		public function ' . $router['router']['function'] . '_get( $get = array() )
 		{
+			
+			echo \'<center style="background:#81FF81">get::' . $router['router']['controller'] . '</center>\';
 
+			if( !empty($get) ) var_dump( $get );	
 
-			# code here...
+			new view( \'/index\' , [\'ThisIsArrayID\' => \'ThisIsArrayArgument\'] );   // $variable[\'ThisIsArrayID\']  ->>> in template
 
 		}
 
