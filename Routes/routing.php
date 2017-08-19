@@ -6,14 +6,14 @@
 			'url' => '/index/var',
 			'var' => '/var1/var2',
 			'rule' => '/([^a-zA-Z0-9_])/i',
-			'controller' => 'Controller',
+			'controller' => 'HomeController',
 			'function' => 'index',
 		),
 
 		array(
 			'url' => '/index/var',
 			'rule' => '/([^a-zA-Z0-9_])/i',
-			'controller' => 'Controller',
+			'controller' => 'HomeController',
 			'function' => 'index',
 		),
 

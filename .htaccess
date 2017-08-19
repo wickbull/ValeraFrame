@@ -1,15 +1,19 @@
 RewriteEngine On
 
-RewriteRule /css/([^\/]+).css$ views/css/$1.css [L]
-RewriteRule /img/([^\/]+).jpg$ views/img/$1.jpg [L]
-RewriteRule /img/([^\/]+).png$ views/img/$1.png [L]
-RewriteRule /img/([^\/]+).gif$ views/img/$1.gif [L]
-
-RewriteRule /upload/([^\/]+).jpg$ upload/$1.jpg [L]
-RewriteRule /upload/([^\/]+).png$ upload/$1.png [L]
-RewriteRule /upload/([^\/]+).gif$ upload/$1.gif [L]
+RewriteRule /Css/([^\/]+).css$ Public/Css/$1.css [L]
 
 RewriteRule /Js/([^\/]+).js$ Public/Js/$1.js [L]
+
+RewriteRule /Img/([^\/]+).jpg$ Public/Img/$1.jpg [L]
+RewriteRule /Img/([^\/]+).png$ Public/Img/$1.png [L]
+RewriteRule /Img/([^\/]+).gif$ Public/Img/$1.gif [L]
+
+RewriteRule /Img/([^\/]+).jpg$ Public/Upload/Img/$1.jpg [L]
+RewriteRule /Img/([^\/]+).png$ Public/Upload/Img/$1.png [L]
+RewriteRule /Img/([^\/]+).gif$ Public/Upload/Img/$1.gif [L]
+
+
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule .* index.php [L]
