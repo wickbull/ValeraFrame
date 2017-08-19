@@ -36,7 +36,7 @@
 
 <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px"><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;url&#39; =&gt; &#39;/index&#39;, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Cтатическая ссылка;</code></div>
 
-<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px"><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;var&#39; =&gt; &#39;/var1/var2&#39;, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Переменные, названия могут быть любые ссылка должна выглядить прмерным образом если там 2 переменных как тут https://www.veb.com/index/2/3 , где 2 - var1 , а 3 - var2;</code></div>
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px"><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;var&#39; =&gt; &#39;/var1/var2&#39;, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Переменные, названия могут быть любые ссылка должна выглядить прмерным образом если там 2 переменных как тут https://www.web.com/index/2/3 , где 2 - var1 , а 3 - var2;</code></div>
 
 <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px"><code>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#39;rule&#39; =&gt; &#39;/([^a-zA-Z0-9_])/i&#39;, &nbsp; &nbsp;// Правило для переменных;</code></div>
 
@@ -51,9 +51,9 @@
 <p>Фреймворк автоматически определяет в каком положении сайт если мы зашли на страницу допустим:&nbsp;</p>
 
 <ol>
-	<li><code>&nbsp;мы зашли https://www.veb.com/index у нас запустится статический метод index_static();</code></li>
-	<li><code>&nbsp;мы зашли&nbsp;https://www.veb.com/index/2/3 у нас запустится пост метод index_post();</code></li>
-	<li>&nbsp;мы зашли&nbsp;<code>https://www.veb.com/index или&nbsp;https://www.veb.com/index/2/3 но использовали &lt;form method=&#39;post&#39;&gt; у нас запустится метод index_get(), в index_get() просто вызываем $_POST;</code></li>
+	<li><code>&nbsp;мы зашли https://www.web.com/index у нас запустится статический метод index_static();</code></li>
+	<li><code>&nbsp;мы зашли&nbsp;https://www.web.com/index/2/3 у нас запустится пост метод index_post();</code></li>
+	<li>&nbsp;мы зашли&nbsp;<code>https://www.web.com/index или&nbsp;https://www.web.com/index/2/3 но использовали &lt;form method=&#39;post&#39;&gt; у нас запустится метод index_get(), в index_get() просто вызываем $_POST;</code></li>
 </ol>
 
 <p><code>Контроллеры находятся в __ROOT__\Controllers... .</code></p>
