@@ -1,1 +1,1 @@
-<center><h1>Фреймворк - ValeraFrame</h1></center>
+<h1><center>Фреймворк - ValeraFrame</center></h1>
