@@ -1,0 +1,19 @@
+RewriteEngine On
+
+RewriteRule /css/([^\/]+).css$ views/css/$1.css [L]
+RewriteRule /img/([^\/]+).jpg$ views/img/$1.jpg [L]
+RewriteRule /img/([^\/]+).png$ views/img/$1.png [L]
+RewriteRule /img/([^\/]+).gif$ views/img/$1.gif [L]
+
+RewriteRule /upload/([^\/]+).jpg$ upload/$1.jpg [L]
+RewriteRule /upload/([^\/]+).png$ upload/$1.png [L]
+RewriteRule /upload/([^\/]+).gif$ upload/$1.gif [L]
+
+RewriteRule /Js/([^\/]+).js$ Public/Js/$1.js [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* index.php [L]
+
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}
+
