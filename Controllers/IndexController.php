@@ -1,14 +1,16 @@
 <?php 
 
-	class IndexController 
+	class IndexController
 	{
 
 		protected $function;
 		protected $get;
 
-		function __construct( $function = array() , $get = array() )
+
+		function __construct( $function = array() , $get = array() , $language = array() )
 		{
 
+			if ( !empty( $language ) ) $this->language = $language;
 			if ( !empty( $function ) ) return $this->$function( $get );
 
 		}
@@ -21,9 +23,7 @@
 			
 			echo '<center style="background:#81FF81">static::IndexController</center>';
 
-			if( !empty($get) ) var_dump( $get );	
-
-			new view( '/index' , ['ThisIsArrayID' => 'ThisIsArrayArgument'] );   // $variable['ThisIsArrayID']  ->>> in template
+			new view( '/index' , [ 'language' => $this->language ] );   // $variable['ThisIsArrayID']  ->>> in template
 
 		}
 

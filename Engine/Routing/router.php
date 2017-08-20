@@ -96,29 +96,34 @@
 
 					if( empty( $router['info']['var'] ) and empty( $_POST ) ) $method = 'static';
 					if( !empty( $router['info']['var'] ) and empty( $_POST ) ) $method = 'post';
-					if( !empty( $_POST ) ) $method = 'get';
+					if( !empty( $_POST ) and empty( $_POST['language'] ) ) $method = 'get';
 
 				}
 
 				if ( !empty( $method ) )
 				{
 
-					if ( empty( $errors ) and $this->config['headerController'] == 'on' ) new headerController();
+					$lang = new MultiLanguage();
+					
+					$language = $lang->lauguage( require __ROOT__ . Config );
+
+					if ( empty( $errors ) and $this->config['headerController'] == 'on' ) new headerController( $language );
 
 					if ( $method == 'static' ) 
-						new $router['router']['controller'] ( $router['router']['function'] . '_' . $method );
+						new $router['router']['controller'] ( $router['router']['function'] . '_' . $method , $router , $language );
 
 					else if ( $method == 'post' ) 
-						new $router['router']['controller']( $router['router']['function'] . '_' . $method , $router );
+						new $router['router']['controller']( $router['router']['function'] . '_' . $method , $router , $language  );
 
 					else if ( $method == 'get' and !empty( $router['info']['var'] ) ) 
-						new $router['router']['controller']( $router['router']['function'] . '_' . $method , $router );
+						new $router['router']['controller']( $router['router']['function'] . '_' . $method , $router , $language  );
 
 					else if ( $method == 'get' ) 
-						new $router['router']['controller']( $router['router']['function'] . '_' . $method , $router );
+						new $router['router']['controller']( $router['router']['function'] . '_' . $method , $router , $language  );
+
 
 					
-					if ( empty( $errors ) and $this->config['footerController'] == 'on' ) new footerController();
+					if ( empty( $errors ) and $this->config['footerController'] == 'on' ) new footerController( $language );
 
 				}
 

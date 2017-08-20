@@ -1,11 +1,11 @@
 <?php 
 
-	function ckeditor( $war )
+	function ckeditor( $var )
 	{
 
 		echo '
 			<script>
-                CKEDITOR.replace( ' . $war . ' );
+                CKEDITOR.replace( ' . $var . ' );
             </script>';
 
 	}

@@ -21,18 +21,16 @@
 	
 	<!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="/index">Sitebar</a>
+        <a class="navbar-brand" href="/index">5s5.com.ua</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/index">Головна</a>
+                    <a class="nav-link" href="/index"><?php echo $variable['language']['home'] ?></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/catalog">Каталог</a>
-                </li>
+
                 <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Каталог</a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
@@ -44,7 +42,7 @@
                     </div>
                 </li> -->
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="services.html">Services</a>
                 </li>
                 <li class="nav-item">
@@ -60,15 +58,17 @@
                         <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
                         <a class="dropdown-item" href="blog-post.html">Blog Post</a>
                     </div>
-                </li>
+                </li> -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Українська <img src="/Public/Img/icons/flags/pl.gif" style="width: 30px; height: 20px;" alt="">
+                            <?php echo $variable['language']['lang'] ?> <img src="<?php echo $variable['language']['langImg'] ?>" style="width: 30px; height: 20px;" alt="">
                         </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                        <a class="dropdown-item">Російська</a>
-                        <a class="dropdown-item">Польска</a>
-                        <a class="dropdown-item">Англійська</a>
+                        <form method="POST">
+                            <?php foreach ( $variable['language']['toChooseLang'] as $key => $value ) : ?>
+                                <button class="dropdown-item" name="language" value="<?php echo $key ?>"><?php echo $value ?></button>
+                            <?php endforeach; ?>
+                        </form>
                     </div>
                 </li>
             </ul>

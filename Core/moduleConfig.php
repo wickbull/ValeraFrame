@@ -5,5 +5,6 @@
 		__MODULES__ . '/dump/dump.module.php',
 		__MODULES__ . '/ckeditor/form.php',
 		__MODULES__ . '/rbconnect/rb.php',
+		__MODULES__ . '/multiLanguage/lang.php',
 		
 		);

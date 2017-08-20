@@ -12,9 +12,10 @@ $text =
 		protected $function;
 		protected $get;
 
-		function __construct( $function = array() , $get = array() )
+		function __construct( $function = array() , $get = array() , $language = array() )
 		{
-
+			
+			if ( !empty( $language ) ) $this->language = $language;
 			if ( !empty( $function ) ) return $this->$function( $get );
 
 		}

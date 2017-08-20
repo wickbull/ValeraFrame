@@ -28,6 +28,8 @@
 			define( '__URL__' , __ENGINE__ . '/Url' ); 
 			define( '__VIEW__' , __ENGINE__ . '/View' ); 
 
+		define( '__LANG__' , __ROOT__ . '/Lang' );
+
 		define( '__PUBLIC__' , __ROOT__ . '/Public' );
 			define( '__JS__' , __PUBLIC__ . '/Js' );
 			define( '__CSS__' , __PUBLIC__ . '/Css' );
