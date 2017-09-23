@@ -1,6 +1,6 @@
 <?php 
 
-	require __DIR__ . '/define.php';
-	require __DIR__ . '/settings.php';
-	require __DIR__ . '/init.php';
+	ini_set( 'display_errors' , 1 );
+
+	require_once __DIR__ . '/app/bootstrap.php';
 	
